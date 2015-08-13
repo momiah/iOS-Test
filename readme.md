@@ -6,6 +6,10 @@ Fork this project into your own GitHub account, commit often and make a pull req
 
 You will earn points for good documentation, error handling and appropriate use of third party and built in frameworks and libraries.
 
+All apps must work for both iPhone (5S, 6, 6 Plus) and iPad (Air, Mini with Retina Display).
+
+All apps must work with iOS 8.4+.
+
 **Please be as creative as you can, from your pull request, you have up to 2 days to pass the test**.
 
 ## Networking
