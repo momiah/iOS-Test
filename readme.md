@@ -16,8 +16,9 @@ All apps must work with iOS 8.4+.
 Open the Xcode project in the **Tests/Networking/Fishrod Networking Test** folder
 
 1. Make a URL request to **https://raw.githubusercontent.com/fishrod-interactive/iOS-Test/master/data/tasklist.json**
-2. Display the response in a Table View
-3. Add a Segmented Control to filter by
+2. Store the data in Core Data
+2. Display the data in a Table View
+3. Add a Segmented Controltrol to filter by
 	* ToDo
 	* Done
 	* All
