@@ -6,6 +6,8 @@ Fork this project into your own GitHub account, commit often and make a pull req
 
 You will earn points for good documentation, error handling and appropriate use of third party and built in frameworks and libraries.
 
+**Please be as creative as you can, from your pull request, you have up to 2 days to pass the test**.
+
 ## Networking
 Open the Xcode project in the **Tests/Networking/Fishrod Networking Test** folder
 
