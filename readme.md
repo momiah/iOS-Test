@@ -10,7 +10,7 @@ All apps must work for both iPhone (5S, 6, 6 Plus) and iPad (Air, Mini with Reti
 
 All apps must work with iOS 8.4+.
 
-**Please be as creative as you can, from your pull request, you have up to 2 days to pass the test**.
+**Please be as creative as you can, you have up to 2 days to pass the test**.
 
 ## Networking
 Open the Xcode project in the **Tests/Networking/Fishrod Networking Test** folder
