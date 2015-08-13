@@ -13,7 +13,7 @@ All apps must work with iOS 8.4+.
 **Please be as creative as you can, you have up to 2 days to pass the test**.
 
 ## Networking
-Open the Xcode project in the **Tests/Networking/Fishrod Networking Test** folder
+Create a new Xcode project in **Tests/Networking** folder
 
 1. Make a URL request to **https://raw.githubusercontent.com/fishrod-interactive/iOS-Test/master/data/tasklist.json**
 2. Store the data in Core Data
@@ -24,15 +24,17 @@ Open the Xcode project in the **Tests/Networking/Fishrod Networking Test** folde
 	* All
 
 ## Views & Autolayout
-Open the Xcode project in **Tests/Autolayout/Fishrod Autolayout Test**
+Create a new Xcode project in **Tests/Autolayout**
 
-1. Place the two text boxes and a button in the centre of the screen on top of each other
+1. Place two text boxes and a button in the centre of the screen above each other
 2. Ensure that all items remain in the centre of the screen for all orientations on iPad
 3. Ensure that all items remain in the centre of the screen for all orientations for iPhone
 4. Ensure that when the keyboard is presented, it doesn’t hide the active input element
 
 ## AV
-Open the Xcode project in **Tests/AV/Fishrod AV Test**
+Create a new Xcode project in **Tests/AV**
 
 1. Capture a live feed from the front facing camera
 2. Display the live feed on screen
+3. Add a button to the view
+4. Make the button capture a photo and capture a photo to take beautiful selfies
