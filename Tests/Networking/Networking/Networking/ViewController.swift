@@ -14,8 +14,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet
     var tableView: UITableView!
     
+    // JSON contents is stored here while being downloaded
+    lazy var data = NSMutableData()
+    
     // The data to display
-    var items: [String] = ["Task 1", "Task 2", "Task 3"]
+    var items: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        startConnection()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,6 +60,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    /* Load file from URL asynchronously */
+    
+    func startConnection(){
+        let urlPath: String = "https://raw.githubusercontent.com/fishrod-interactive/iOS-Test/master/data/tasklist.json"
+        var url: NSURL = NSURL(string: urlPath)!
+        var request: NSURLRequest = NSURLRequest(URL: url)
+        var connection: NSURLConnection = NSURLConnection(request: request, delegate: self, startImmediately: false)!
+        connection.start()
+    }
+    
+    func connection(connection: NSURLConnection!, didReceiveData data: NSData!){
+        self.data.appendData(data)
+    }
+    
+    func connectionDidFinishLoading(connection: NSURLConnection!) {
+        var err: NSError
+        
+        // Parse file contents
+        var tasks: NSMutableArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSMutableArray
+        
+        // Go through data and append to table
+        for task in tasks {
+            println(task["task"])
+            
+            items.append(task["task"] as! String)
+        }
+        
+        // Update table
+        self.tableView.reloadData()
+    }
 
 
 }
