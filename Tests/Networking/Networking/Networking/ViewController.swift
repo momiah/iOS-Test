@@ -14,11 +14,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet
     var tableView: UITableView!
     
+    // The link to the segmented control
+    @IBOutlet
+    var segmentedControl: UISegmentedControl!
+    
     // JSON contents is stored here while being downloaded
     lazy var data = NSMutableData()
     
+    // All tasks are stored here
+    var tasks: NSMutableArray = []
+    
     // The data to display
-    var items: [String] = []
+    var items: [String] = ["Loading..."]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    /* Classes made to conform to protocols for UITableView */
-    
+    /* Classes for the UITableView */
     
     // Set the number of rows in the table on the page to the number
     // of items in the data object
@@ -60,6 +66,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
+    /* Classes for the UISegmentedControl */
+    
+    @IBAction
+    func segmentedControlAction (sender: AnyObject) {
+        updateTable()
+    }
+    
     /* Load file from URL asynchronously */
     
     func startConnection(){
@@ -78,11 +91,25 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var err: NSError
         
         // Parse file contents
-        var tasks: NSMutableArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSMutableArray
+        self.tasks = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: nil) as! NSMutableArray
+        
+        updateTable()
+    }
+    
+    // Method called to update the table displayed
+    func updateTable() {
+        items.removeAll(keepCapacity: false)
         
         // Go through data and append to table
         for task in tasks {
-            println(task["task"])
+            //println(task)
+            
+            if segmentedControl.selectedSegmentIndex==0 && (task["done"] as! Bool) {
+                continue
+            }
+            if segmentedControl.selectedSegmentIndex==1 && !(task["done"] as! Bool) {
+                continue
+            }
             
             items.append(task["task"] as! String)
         }
